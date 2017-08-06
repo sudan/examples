@@ -1,0 +1,19 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.21'
+    compile 'org.apache.kafka:kafka-clients:0.9.0.0'
+
+    testCompile 'junit:junit:4.12'
+}
+
+task Run(type: JavaExec) {
+    main = 'org.kafka.consumer.KafkaConsumer'
+    standardInput = System.in
+    classpath = sourceSets.main.runtimeClasspath
+}
