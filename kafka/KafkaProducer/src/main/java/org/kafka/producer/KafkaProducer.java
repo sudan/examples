@@ -1,6 +1,7 @@
 package org.kafka.producer;
 
 import org.apache.kafka.clients.producer.Producer;
+import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 
 import java.util.Properties;
@@ -13,10 +14,10 @@ public class KafkaProducer {
     private static Producer<String, String> producer;
 
     public KafkaProducer() {
-        properties.put("bootstrap.servers", "localhost:9092");
-        properties.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        properties.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        properties.put("acks", "1");
+        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
+        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
+        properties.put(ProducerConfig.ACKS_CONFIG, "1");
     }
 
     public static void main(String args[]) throws ExecutionException, InterruptedException {
